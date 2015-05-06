@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    
+
+</head>
+<body>
+     
+               <p>  
+using (Stream pdfStream = new FileStream(oldFile, FileMode.Open))
+        using (Stream newpdfStream = new FileStream(newFile, FileMode.Create, FileAccess.ReadWrite))
+        {
+            PdfReader pdfReader = new PdfReader(pdfStream);
+            PdfStamper pdfStamper = new PdfStamper(pdfReader, newpdfStream);
+            PdfContentByte pdfContentByte = pdfStamper.GetOverContent(1);            
+            Font font = new Font(Font.FontFamily.ZAPFDINGBATS, 12);
+            Phrase phrase = new Phrase("3", font);
+            pdfContentByte.BeginText();
+            ColumnText.ShowTextAligned(pdfContentByte, Element.ALIGN_CENTER, phrase, 200, 500, 0);           
+            pdfContentByte.EndText();
+            pdfStamper.Close();
+              
+
+
+        }
+
+</p>
+   
+</body>
+</html>
